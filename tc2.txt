@@ -1,0 +1,32 @@
+% Datos de entrada 
+f0 = 100; 
+f1 = 350; 
+fs = 44100; 
+ts = 1 / fs; 
+
+% Definición del vector de tiempos y señal temporal 
+t = 0:ts:0.25; 
+x = 8 * cos(2 * pi * f0 * t) + 5 * cos(2 * pi * f1 * t); 
+
+% Representación temporal 
+figure; 
+subplot(2,1,1); 
+plot(t, x); 
+title('Señal temporal'); 
+xlabel('Tiempo (s)'); 
+ylabel('Amplitud'); 
+
+% Calculo de la FFT 
+X = fft(x, 2 * length(x)) / length(x); 
+Interpolacion = fs / length(X);  
+X_abs = abs(X);  
+
+% Definición del vector frecuencias 
+f = -fs / 2 : fs / (length(X) - 1) : fs / 2; 
+
+% Representación espectral 
+subplot(2,1,2); 
+plot(f, fftshift(X_abs)); 
+title('Señal espectral'); 
+xlabel('Frecuencia (Hz)'); 
+ylabel('Magnitud');  
