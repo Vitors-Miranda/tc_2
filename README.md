@@ -1,1 +1,2 @@
-# tc_2
+# Teoria de la comunicaccion
+Práctica con Matlab 
